@@ -114,7 +114,11 @@ jobs:
           body: ${{ env.RELEASE_NOTES }}  # Pass the RELEASE_NOTES to the action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          
+      - name: Set up GitHub CLI
+        run: |
+          sudo apt-get install gh
+          
       - name: Upload Release Assets Dynamically
         run: |
           # Loop through all files in the downloaded-artifacts directory
