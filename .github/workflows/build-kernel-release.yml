@@ -22,7 +22,7 @@ jobs:
       codename: "zumapro"
       repo: "android_kernel_google_zumapro"
       android_version: "android15"
-      kernel_version: "6.1"
+      kernel_version: "6.6"
 
   trigger-release:
     runs-on: ubuntu-latest
