@@ -4,31 +4,25 @@ permissions:
   actions: write   # Allows triggering actions
 
 on:
-  workflow_call: # This allows this workflow to be called from another workflow
+  workflow_dispatch:
     inputs:
       codename:
+        description: 'Device codename'
         required: true
-        type: string
+        default: 'tokay'
+      repo:
+        description: 'Kernel repo name'
+        required: true
+        default: 'Sultan_KernelSU_SUSFS'
       android_version:
+        description: 'Android version'
         required: true
-        type: string
+        default: '15'
       kernel_version:
+        description: 'Kernel version'
         required: true
-        type: string
-      inputs:
-  codename:
-    description: 'Device codename'
-    required: true
-    default: 'tokay'              # Pixel 9 codename
-  android_version:
-    description: 'Android version'
-    required: true
-    default: '15'                 # Android 15
-  kernel_version:
-    description: 'Kernel version'
-    required: true
-    default: '6.1'                # Kernel version 6.1 (adjust if you want a different version)
-  
+        default: '6.1'
+        
 jobs:
   build-kernel-sultan-kernelsu-susfs:
     runs-on: ubuntu-latest
