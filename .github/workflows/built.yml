@@ -195,6 +195,18 @@ jobs:
           echo "Running sed commands..."
           sed -i 's/CONFIG_LOCALVERSION="-Sultan"/CONFIG_LOCALVERSION="-Wild"/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
 
+      - name: Patch kernel_compat.c to fix duplicate ksu_access_ok
+        run: |
+          # Try to patch all possible kernel source directories
+          for dir in android_kernel_google_gs201 android_kernel_google_zuma android_kernel_google_zumapro; do
+            file="$GITHUB_WORKSPACE/$dir/drivers/kernelsu/kernel_compat.c"
+            if [ -f "$file" ]; then
+              # Comment out the second definition if it's present
+              sed -i '/static inline int ksu_access_ok/,/^}/s/^/\/\/ /' "$file"
+              echo "Patched $file"
+            fi
+          done
+
       - name: Build the Kernel
         run: |
           echo "Changing to configuration directory: ${{ inputs.repo }}..."
