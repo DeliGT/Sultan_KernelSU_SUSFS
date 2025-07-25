@@ -18,6 +18,23 @@ on:
       kernel_version:
         required: true
         type: string
+      inputs:
+  codename:
+    description: 'Device codename'
+    required: true
+    default: 'tokay'              # Pixel 9 codename
+  repo:
+    description: 'Kernel repo name'
+    required: true
+    default: 'Sultan_KernelSU_SUSFS'  # Replace with your actual kernel repo name
+  android_version:
+    description: 'Android version'
+    required: true
+    default: '15'                 # Android 15
+  kernel_version:
+    description: 'Kernel version'
+    required: true
+    default: '6.1'                # Kernel version 6.1 (adjust if you want a different version)
   
 jobs:
   build-kernel-sultan-kernelsu-susfs:
