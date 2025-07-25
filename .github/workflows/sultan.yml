@@ -205,7 +205,7 @@ jobs:
           
       - name: Add PR_SET_PROPERTY & init.d support (spoof_and_initd.c)
         run: |
-          cat << 'EOF' > $GITHUB_WORKSPACE/android_kernel_google_zumapro/drivers/misc/spoof_and_initd.c
+          cat << 'EOF' > android_kernel_google_zumapro/drivers/misc/spoof_and_initd.c
           // SPDX-License-Identifier: GPL-2.0
           // PR_SET_PROPERTY syscall and init.d support for Android kernels
 
