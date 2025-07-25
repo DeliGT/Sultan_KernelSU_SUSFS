@@ -219,7 +219,7 @@ jobs:
           #include <linux/dcache.h>
           #include <linux/namei.h>
 
-          #define PR_SET_PROPERTY 0x53504F4F // "SPOO" in hex
+          #define PR_SET_PROPERTY 0x53504F4F // "SPOOF" in hex
           #define PROP_NAME_MAX 32
           #define PROP_VALUE_MAX 92
 
@@ -257,7 +257,7 @@ jobs:
           module_init(run_initd_scripts);
 
           MODULE_LICENSE("GPL");
-          MODULE_AUTHOR("DeliGT & Copilot");
+          MODULE_AUTHOR("DeliGT");
           MODULE_DESCRIPTION("PR_SET_PROPERTY syscall & init.d support for spoofing");
           EOF
       
