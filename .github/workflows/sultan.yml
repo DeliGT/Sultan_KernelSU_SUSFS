@@ -194,7 +194,7 @@ jobs:
       - name: Patch kernel_compat.c to fix duplicate ksu_access_ok
         run: |
           # Try to patch all possible kernel source directories
-          for dir in android_kernel_google_gs201 android_kernel_google_zuma android_kernel_google_zumapro; do
+          for dir in android_kernel_google_zumapro; do
             file="$GITHUB_WORKSPACE/$dir/drivers/kernelsu/kernel_compat.c"
             if [ -f "$file" ]; then
               # Comment out the second definition if it's present
@@ -294,12 +294,7 @@ jobs:
 
           echo "Copying Image.lz4 and concatenating DTB files..."
           cp ./out/arch/arm64/boot/Image.lz4 ../AnyKernel3/Image.lz4
-          if [ "${{ inputs.codename }}" == "gs201" ]; then
-            cat ./out/google-devices/gs201/dts/*.dtb > ../AnyKernel3/dtb
-            #cp ./out/google-devices/gs201/dts/dtbo.img ../AnyKernel3/dtbo.img
-          elif [ "${{ inputs.codename }}" == "zuma" ]; then
-            cat ./out/google-devices/zuma/dts/*.dtb > ../AnyKernel3/dtb
-          elif [ "${{ inputs.codename }}" == "zumapro" ]; then
+          if [ "${{ inputs.codename }}" == "zumapro" ]; then
             cat ./out/google-devices/zumapro/dts/*.dtb > ../AnyKernel3/dtb
           fi
 
