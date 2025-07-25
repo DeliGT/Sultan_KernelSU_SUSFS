@@ -60,9 +60,16 @@ jobs:
           # Debug print the branches
           echo "Using branch for AnyKernel3: $ANYKERNEL_BRANCH"
           echo "Using branch for SUSFS: $SUSFS_BRANCH"
-
-          # Clone repositories using the branch names
+          
+      - name: Clone AnyKernel3 and modify AnyKernel.sh
+        run: |
+          echo "Cloning AnyKernel3..."
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
+      
+          echo "Modifying AnyKernel.sh to adjust supported Android versions and patchlevels..."
+          sed -i '17s/supported\.versions=.*/supported.versions=15/' AnyKernel3/AnyKernel.sh
+          sed -i '18s/supported\.patchlevels=.*/supported.patchlevels=2025-04 - 2027-08/' AnyKernel3/AnyKernel.sh
+
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           
       - name: Modify AnyKernel.sh values
