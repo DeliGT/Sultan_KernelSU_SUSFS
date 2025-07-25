@@ -1,0 +1,31 @@
+name: Kernel Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y bc bison flex libssl-dev libelf-dev build-essential clang lld
+
+    - name: Set up environment
+      run: |
+        export CONFIG=android_kernel_google_zumapro
+        echo "Changing to configuration directory: $CONFIG..."
+        cd "$CONFIG"
+
+        echo "Building the kernel..."
+        make O=out zumapro_defconfig
+        make O=out -j$(nproc)
