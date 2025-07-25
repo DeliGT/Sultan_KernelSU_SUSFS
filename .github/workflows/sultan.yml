@@ -261,11 +261,14 @@ jobs:
           MODULE_DESCRIPTION("PR_SET_PROPERTY syscall & init.d support for spoofing");
           EOF
 
-      # Add spoof_and_initd.c to your drivers/misc/Makefile (patch line)
-      - name: Register spoof_and_initd in misc/Makefile
+      - name: Add spoof_and_initd.c to kernel source
         run: |
-          echo "obj-y += spoof_and_initd.o" >> $GITHUB_WORKSPACE/android_kernel_google_zumapro/drivers/misc/Makefile
-          
+          cp .github/workflows/drivers/misc/spoof_and_initd.c android_kernel_google_zumapro/drivers/misc/spoof_and_initd.c
+      
+      - name: Register spoof_and_initd.o in misc/Makefile
+        run: |
+          echo "obj-y += spoof_and_initd.o" >> android_kernel_google_zumapro/drivers/misc/Makefile
+
       - name: Build the Kernel
         run: |
           echo "Changing to configuration directory: ${{ inputs.repo }}..."
