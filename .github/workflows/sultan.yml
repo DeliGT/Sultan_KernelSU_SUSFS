@@ -27,12 +27,9 @@ jobs:
         uses: AdityaGarg8/remove-unwanted-software@v5
         with:
           remove-dotnet: 'true'          # Frees ~2 GB
-          remove-android: 'true'         # Frees ~9 GB
           remove-haskell: 'true'         # Frees ~5.2 GB
-          remove-codeql: 'true'          # Frees ~5.4 GB
           remove-docker-images: 'true'   # Frees ~3.2 GB
           remove-large-packages: 'true'  # Frees ~3.1 GB
-          remove-swapfile: 'true'        # Frees ~4 GB
           remove-cached-tools: 'false'   # Avoid unless confirmed safe
           verbose: 'true'                # Enable detailed logging
           
@@ -77,13 +74,6 @@ jobs:
           cd susfs4ksu
           git checkout origin/gki-android15-6.6
 
-          
-      - name: Modify AnyKernel.sh values
-        run: |
-          echo "Modifying AnyKernel.sh to adjust supported Android versions and patchlevels..."
-          sed -i '17s/supported\.versions=.*/supported.versions=15/' AnyKernel.sh
-          sed -i '18s/supported\.patchlevels=.*/supported.patchlevels=2025-04 - 2027-08/' AnyKernel.sh
-          
           #cd susfs4ksu
           #git checkout b5c3ada461a61c6ad033693b7a00494ead3a28fd
           #cd ..
