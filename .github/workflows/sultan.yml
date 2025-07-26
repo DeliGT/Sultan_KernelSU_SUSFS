@@ -65,14 +65,17 @@ jobs:
         run: |
           echo "Cloning AnyKernel3..."
           git clone https://github.com/WildKernels/AnyKernel3
+          cd AnyKernel3
           git checkout sultan-zumapro
       
           echo "Modifying AnyKernel.sh to adjust supported Android versions and patchlevels..."
           sed -i '17s/supported\.versions=.*/supported.versions=15/' anykernel.sh
           sed -i '18s/supported\.patchlevels=.*/supported.patchlevels=2025-04 - 2027-08/' anykernel.sh
-
-          git clone https://gitlab.com/simonpunk/susfs4ksu
-          git checkout gki-android-15-6.6
+          cd ..
+          
+          git clone https://gitlab.com/simonpunk/susfs4ksu.git/
+          cd susfs4ksu
+          git checkout origin/gki-android15-6.6
 
           
       - name: Modify AnyKernel.sh values
