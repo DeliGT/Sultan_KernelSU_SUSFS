@@ -67,8 +67,8 @@ jobs:
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
       
           echo "Modifying AnyKernel.sh to adjust supported Android versions and patchlevels..."
-          sed -i '17s/supported\.versions=.*/supported.versions=15/' AnyKernel3/AnyKernel.sh
-          sed -i '18s/supported\.patchlevels=.*/supported.patchlevels=2025-04 - 2027-08/' AnyKernel3/AnyKernel.sh
+          sed -i '17s/supported\.versions=.*/supported.versions=15/' AnyKernel.sh
+          sed -i '18s/supported\.patchlevels=.*/supported.patchlevels=2025-04 - 2027-08/' AnyKernel.sh
 
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           
