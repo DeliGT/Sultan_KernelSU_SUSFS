@@ -54,8 +54,8 @@ jobs:
         run: |
           echo "Cloning AnyKernel3 and other dependencies..."
           
-          ANYKERNEL_BRANCH="sultan-${{ inputs.codename }}"
-          SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
+          ANYKERNEL_BRANCH="sultan-zumapro"
+          SUSFS_BRANCH="gki-android15-6.6"
 
           # Debug print the branches
           echo "Using branch for AnyKernel3: $ANYKERNEL_BRANCH"
